@@ -23,16 +23,9 @@
             {% csrf_token %}
             <input
               type="submit"
-              {%
-              if
-              item.done
-              %}value="Not Done"
-              {%
-              else
-              %}value="Done"
-              {%
-              endif
-              %}
+              {% if item.done %}value="Not Done"
+              {% else %}value="Done"
+              {% endif %}
             />
           </form>
         </td>
