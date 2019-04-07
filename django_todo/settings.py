@@ -13,11 +13,10 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import dj_database_url
 
-if os.environ.get("IP") == "127.0.0.0":
+if os.environ.get("DEVELOPMENT"):
     development = True
 else:
     development = False
-print(development)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,12 +26,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '10oanvo@e=ux2p*=z6)#^f#he_+nkfx=2p!ilu6$d*my#e4u^5'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = development
 
-ALLOWED_HOSTS = [os.environ.get('HOSTNAME'), "127.0.0.1"]
+ALLOWED_HOSTS = [os.environ.get('HOSTNAME')]
 
 
 # Application definition
